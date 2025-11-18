@@ -1,0 +1,4 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","13737","End to End Purchase Flow using POM","webkit","Tue Nov 18 11:57:06 IST 2025","passed","Tue Nov 18 11:57:20 IST 2025","","pomtest.spec.ts","",""
+"","17728","End to End Purchase Flow using POM","firefox","Tue Nov 18 11:56:51 IST 2025","passed","Tue Nov 18 11:57:08 IST 2025","","pomtest.spec.ts","",""
+"","13044","End to End Purchase Flow using POM","chromium","Tue Nov 18 11:56:51 IST 2025","passed","Tue Nov 18 11:57:04 IST 2025","","pomtest.spec.ts","",""

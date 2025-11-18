@@ -1,0 +1,31 @@
+import { Page ,Locator } from '@playwright/test';
+
+export class cartpage{
+private page:Page;
+private productNamesInCart:Promise<Array<Locator>>;
+
+constructor(page:Page) 
+{
+
+    this.page=page;
+    this.productNamesInCart=this.page.locator('#tbodyid tr td:nth-child(2)').all();
+
+}
+
+async checkProductInCart (productName:string): Promise<boolean> {
+
+const products =await this.productNamesInCart;
+
+
+for (const product of products) {
+
+    const name:any=( await product.textContent())?.trim();
+
+    console.log(name);
+    if (name === productName) {
+        return true;
+    }
+    }
+    return false;
+} 
+}
