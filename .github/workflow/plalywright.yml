@@ -1,0 +1,51 @@
+ame: Playwright Tests
+
+on:
+  push:
+    branches:
+      - [master]  # or your default branch
+  pull_request:
+    branches:
+      - [master]  # Trigger on PRs to the main branch
+
+jobs:
+  test:
+    timeout-minutes: 60
+
+    runs-on: windows-latest-latest  # You can use other runners like macos-latest or windows-latest if needed
+
+    steps:
+      # Checkout the repository code
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Set up Node.js environment
+      - name: Set up Node.js
+        uses: actions/setup-node@v4n
+        with:
+          node-version: Its/*  # Use the appropriate Node.js version for your project
+
+      # Install dependencies
+      - name: Install dependencies
+        run: 
+          npm ci  # or `yarn install` if you use Yarn
+
+      # Install Playwright browsers and dependencies
+      - name: Install Playwright browsers
+        run: |
+          npx playwright install --with-deps  # Installs browsers and necessary dependencies
+
+      # Run Playwright tests
+      - name: Run Playwright tests
+        #run: npx playwright test 
+        #run: npm playwright test --grep "@sanity"
+        run: npm run test:sanity 
+          
+      # Optionally, upload test results as an artifact (for debugging, if desired)
+      - name: Upload playwright HTML report
+        if: always()  # Upload the results regardless of success or failure
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: playwright-report/  # Path to the test results directory, if you have one
+          retention days: 30
