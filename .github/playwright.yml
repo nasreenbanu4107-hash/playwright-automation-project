@@ -37,8 +37,9 @@ jobs:
 
       # Run Playwright tests
       - name: Run Playwright tests
-        run: #npm playwright test --grep "@sanity"
-        #npx playwright test:sanity # or use `npm run test` if your package.json defines a test script
+        #run: npx playwright test 
+        #run: npm playwright test --grep "@sanity"
+        run: npm run test:sanity 
           
       # Optionally, upload test results as an artifact (for debugging, if desired)
       - name: Upload playwright HTML report
